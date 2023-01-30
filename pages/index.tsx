@@ -13,8 +13,7 @@ import {
   Star,
 } from "react-feather";
 import Header from "./components/Header";
-import Work from "./data/Work";
-import Experience from "./data/Experience";
+import { Experience, Work } from "./data/data";
 const myFont = localFont({
   src: [
     {

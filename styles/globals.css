@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  @apply scroll-smooth;
+}
+body {
+  @apply bg-primary text-white selection:bg-transparent selection:text-secondary scroll-smooth;
+}
+
+.text--underline {
+  @apply text-white border-b-[0.5px] border-transparent hover:border-white cursor-pointer;
+}
+.icon::before {
+  content: "▹";
+  position: absolute;
+  left: 0px;
+}
+.scrollbar--hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar--hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.button--text {
+  @apply text-white bg-[#1d1f35] py-1 pt-[9px] rounded-sm px-3 font-light whitespace-nowrap;
+}
+.btn-shine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #a4b1d6;
+  background: linear-gradient(to right, #a4b1d6 0, white 10%, #a4b1d6 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 380px;
+  }
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  @apply bg-secondary-100;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}

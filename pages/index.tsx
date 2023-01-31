@@ -45,7 +45,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 5) {
+      if (window.scrollY > 150) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -65,11 +65,15 @@ export default function Home() {
       </Head>
       <main className={myFont.className}>
         <Header />
-        {isScrolled && (
-          <div className="fixed top-0 w-full z-[100] bg-primary shadow-2xl">
-            <Header />
-          </div>
-        )}
+        <div
+          className={`fixed w-full h-fit delay-75 ${
+            isScrolled
+              ? "opacity-100 z-[100] top-0 visible transition"
+              : "opacity-0 -z-[100] -top-10 invisible"
+          }  bg-primary shadow-2xl`}
+        >
+          <Header />
+        </div>
 
         <div className="max-w-6xl m-auto px-4 lg:px-2">
           <section className="relative pt-16 sm:mb-32 sm:pt-44 -h-screen 2xl:h-auto">
@@ -336,22 +340,30 @@ export default function Home() {
                   className="grid grid-cols-1 md:grid-cols-2 place-items-center group cursor-pointer mb-16"
                   rel="noreferrer"
                 >
-                  <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                  {k % 2 === 0 && (
+                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                      <Image
+                        src={v.image}
+                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                        alt={v.name}
+                        width={779}
+                        height={462}
+                      />
+                    </div>
+                  )}
+                  <div
+                    className={`text-left ${
+                      k % 2 === 0
+                        ? "md:text-right md:-ml-[20px]"
+                        : "md:text-left -mr-[20px]"
+                    } z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none`}
+                  >
                     <Image
                       src={v.image}
-                      className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
-                      alt={v.name}
-                      width={379}
-                      height={262}
-                    />
-                  </div>
-                  <div className="text-left md:text-right md:-ml-[20px] z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none">
-                    <Image
-                      src={v.image}
-                      className="block md:hidden absolute inset-0 rounded-sm object-cover w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
+                      className="block md:hidden absolute inset-0 rounded-sm object-contain w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
                       alt=""
-                      width={379}
-                      height={262}
+                      width={779}
+                      height={462}
                     />
                     <h4 className="font-medium text-sm">Featured {v.compay}</h4>
                     <h2 className="text-3xl mt-3 mb-5 font-semibold text-secondary">
@@ -362,7 +374,11 @@ export default function Home() {
                         {v.detail}
                       </p>
                     </div>
-                    <div className="mt-6 flex justify-start md:justify-end gap-3">
+                    <div
+                      className={`mt-6 flex justify-start gap-3 ${
+                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                      }`}
+                    >
                       {v.tech.map((v, k) => {
                         return (
                           <span className="text-sm text-secondary-100" key={k}>
@@ -371,7 +387,11 @@ export default function Home() {
                         );
                       })}
                     </div>
-                    <div className="flex justify-start md:justify-end mt-3">
+                    <div
+                      className={`flex justify-start ${
+                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                      } mt-3`}
+                    >
                       <svg
                         width={24}
                         height={24}
@@ -392,6 +412,17 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
+                  {k % 2 !== 0 && (
+                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                      <Image
+                        src={v.image}
+                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                        alt={v.name}
+                        width={379}
+                        height={262}
+                      />
+                    </div>
+                  )}
                 </a>
               );
             })}

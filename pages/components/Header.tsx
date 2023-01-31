@@ -10,7 +10,7 @@ export default function Header() {
       <div className="flex items-center justify-between">
         <Image
           src="/assets/logo.png"
-          className="z-[10000000000] -ml-2.5 sm:ml-0"
+          className="z-[10000000000] sm:z-auto -ml-2.5 sm:ml-0"
           alt="Hirwa Aldo"
           width={80}
           height={80}

@@ -4,7 +4,6 @@ import { Menu, X } from "react-feather";
 export default function Header() {
   const [opan, setOpan] = useState(false);
   const refCategoryMenu = useRef(null);
-  console.log(opan);
   return (
     <div className="max-w-screen-2xl pr-4 sm:px-10 m-auto relative">
       <div className="flex items-center justify-between">
@@ -40,11 +39,11 @@ export default function Header() {
 
         <div
           ref={refCategoryMenu}
-          className={`fixed h-screen flex backdrop-blur-sm transition-all delay-75 right-0 w-[0%] ${
+          className={`fixed h-screen flex transition-all delay-75 right-0 w-[0%] z-[2000000000] ${
             opan ? "w-[100%] right-0" : "w-[0%] -right-32"
           }  z-50 top-0 `}
         >
-          <div className="flex-1" onClick={() => setOpan(false)}></div>
+          <div className="flex-1 blur" onClick={() => setOpan(false)}></div>
           <div className="w-[77%] h-full bg-primary ml-auto p-4">
             <X
               size={40}

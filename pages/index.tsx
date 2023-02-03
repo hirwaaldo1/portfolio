@@ -2,19 +2,14 @@ import Head from "next/head";
 import localFont from "@next/font/local";
 import Image from "next/image";
 import Title from "./components/ui/Title";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import Link from "next/link";
-import {
-  GitHub,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Dribbble,
-  Star,
-} from "react-feather";
+import { GitHub, Instagram, Twitter, Linkedin, Dribbble } from "react-feather";
 import Header from "./components/Header";
 import Experience from "./data/Experience.json";
 import Work from "./data/Work.json";
+import { Slide } from "react-awesome-reveal";
+import { getSkills } from "@/services/skills";
 const myFont = localFont({
   src: [
     {
@@ -43,6 +38,7 @@ const myFont = localFont({
 export default function Home() {
   const [whereIWork, setWhereIWork] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [skills, setSkills] = useState([]);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 150) {
@@ -52,6 +48,10 @@ export default function Home() {
       }
     });
   }, []);
+  useEffect(() => {
+    getSkills(setSkills, process.env.BACKEND_URL);
+  }, []);
+
   return (
     <>
       <Head>
@@ -128,7 +128,7 @@ export default function Home() {
                 </svg>
               </div>
             </a>
-            <div className="flex text-secondary-200 gap-12">
+            <div className="flex text-secondary-200 gap-3 flex-wrap sm:flex-nowrap sm:gap-12">
               <a
                 href={"https://github.com/hirwaaldo1"}
                 target="_blank"
@@ -200,40 +200,24 @@ export default function Home() {
                   . I strive to create positive online experiences for users
                   through my work.
                 </p>
-                {/* <p>
-                  I also recently{" "}
-                  <span className="text--underline">launched a course</span>{" "}
-                  that covers everything you need to build a web app with the
-                  Spotify API using Node & React.
-                </p> */}
                 <p>
                   Here are a few technologies I{"’"}ve been working with
                   recently:
                 </p>
-                <div className="grid grid-cols-2">
-                  {[
-                    "JavaScript (ES6+)",
-                    "TypeScript",
-                    "React",
-                    "Nextjs",
-                    "Node.js",
-                    "Dart",
-                    "Flutter (Apps)",
-                    "Figma",
-                    "Thunkable",
-                    "Eleventy",
-                    "WordPress",
-                  ].map((v, k) => {
-                    return (
-                      <div
-                        key={k}
-                        className="text-[15px] flex items-center gap-3"
-                      >
-                        <span className="text-sm text-white">{"▹"}</span>
-                        <span>{v}</span>
-                      </div>
-                    );
-                  })}
+                <div className="grid grid-cols-2 overflow-hidden">
+                  <Slide cascade damping={0.2}>
+                    {skills.map((v: any, k) => {
+                      return (
+                        <div
+                          key={k}
+                          className="text-[15px] flex items-center gap-3"
+                        >
+                          <span className="text-sm text-white">{"▹"}</span>
+                          <span>{v.name}</span>
+                        </div>
+                      );
+                    })}
+                  </Slide>
                 </div>
               </div>
               <div className="w-fit hidden md:block">
@@ -253,7 +237,7 @@ export default function Home() {
             </div>
           </section>
           <section
-            className="mb-[50px] pt-20 sm:mb-[130px] w-fit mx-auto"
+            className="mb-[50px] pt-20 sm:mb-[130px] w-full sm:w-fit mx-auto"
             id="Experience"
           >
             <Title name="Where I’ve Worked" number={"02"} />
@@ -329,103 +313,113 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="mb-[50px] pt-20 sm:mb-[130px]" id="Work">
+          <section
+            className="mb-[50px] pt-20 sm:mb-[130px] overflow-hidden"
+            id="Work"
+          >
             <Title name="Some Things I've Built" number={"03"} />
-            {Work.map((v, k) => {
-              return (
-                <a
-                  href={v.link}
-                  target="_blank"
-                  key={k}
-                  className="grid grid-cols-1 md:grid-cols-2 place-items-center group cursor-pointer mb-16"
-                  rel="noreferrer"
-                >
-                  {k % 2 === 0 && (
-                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+            <Slide style={{ overflow: "hidden" }}>
+              {Work.map((v, k) => {
+                return (
+                  <a
+                    href={v.link}
+                    target="_blank"
+                    key={k}
+                    className="grid grid-cols-1 md:grid-cols-2 place-items-center group cursor-pointer mb-16"
+                    rel="noreferrer"
+                  >
+                    {k % 2 === 0 && (
+                      <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                        <Image
+                          src={v.image}
+                          className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                          alt={v.name}
+                          width={779}
+                          height={462}
+                        />
+                      </div>
+                    )}
+                    <div
+                      className={`text-left ${
+                        k % 2 === 0
+                          ? "md:text-right md:-ml-[20px]"
+                          : "md:text-left -mr-[20px]"
+                      } z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none`}
+                    >
                       <Image
                         src={v.image}
-                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
-                        alt={v.name}
+                        className="block md:hidden absolute inset-0 rounded-sm object-contain w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
+                        alt=""
                         width={779}
                         height={462}
                       />
-                    </div>
-                  )}
-                  <div
-                    className={`text-left ${
-                      k % 2 === 0
-                        ? "md:text-right md:-ml-[20px]"
-                        : "md:text-left -mr-[20px]"
-                    } z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none`}
-                  >
-                    <Image
-                      src={v.image}
-                      className="block md:hidden absolute inset-0 rounded-sm object-contain w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
-                      alt=""
-                      width={779}
-                      height={462}
-                    />
-                    <h4 className="font-medium text-sm">Featured {v.compay}</h4>
-                    <h2 className="text-3xl mt-3 mb-5 font-semibold text-secondary">
-                      {v.name}
-                    </h2>
-                    <div>
-                      <p className="text-lg text-secondary-100 leading-6 md:bg-primary md:p-12 rounded-sm md:shadow-2xl">
-                        {v.detail}
-                      </p>
-                    </div>
-                    <div
-                      className={`mt-6 flex justify-start gap-3 ${
-                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                      }`}
-                    >
-                      {v.tech.map((v, k) => {
-                        return (
-                          <span className="text-sm text-secondary-100" key={k}>
-                            {v}
-                          </span>
-                        );
-                      })}
-                    </div>
-                    <div
-                      className={`flex justify-start ${
-                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                      } mt-3`}
-                    >
-                      <svg
-                        width={24}
-                        height={24}
-                        xmlns="http://www.w3.org/2000/svg"
-                        role="img"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#ccd6f6"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-external-link"
+                      <h4 className="font-medium text-sm">
+                        Featured {v.compay}
+                      </h4>
+                      <h2 className="text-3xl mt-3 mb-5 font-semibold text-secondary">
+                        {v.name}
+                      </h2>
+                      <div>
+                        <p className="text-lg text-secondary-100 leading-6 md:bg-primary md:p-12 rounded-sm md:shadow-2xl">
+                          {v.detail}
+                        </p>
+                      </div>
+                      <div
+                        className={`mt-6 flex justify-start gap-3 ${
+                          k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                        }`}
                       >
-                        <title>External Link</title>
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                      </svg>
+                        {v.tech.map((v, k) => {
+                          return (
+                            <span
+                              className="text-sm text-secondary-100"
+                              key={k}
+                            >
+                              {v}
+                            </span>
+                          );
+                        })}
+                      </div>
+                      <div
+                        className={`flex justify-start ${
+                          k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                        } mt-3`}
+                      >
+                        <svg
+                          width={24}
+                          height={24}
+                          xmlns="http://www.w3.org/2000/svg"
+                          role="img"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#ccd6f6"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="feather feather-external-link"
+                        >
+                          <title>External Link</title>
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                  {k % 2 !== 0 && (
-                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
-                      <Image
-                        src={v.image}
-                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
-                        alt={v.name}
-                        width={379}
-                        height={262}
-                      />
-                    </div>
-                  )}
-                </a>
-              );
-            })}
+                    {k % 2 !== 0 && (
+                      <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                        <Image
+                          src={v.image}
+                          className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                          alt={v.name}
+                          width={379}
+                          height={262}
+                        />
+                      </div>
+                    )}
+                  </a>
+                );
+              })}
+            </Slide>
           </section>
           <section className="flex flex-col justify-center mb-2" id="Contact">
             <div className="text-center">

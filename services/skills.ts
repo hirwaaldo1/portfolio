@@ -12,7 +12,7 @@ import supabase from "@/libs/superbase";
 async function addSkilltoDb (skill: any, url: string|undefined) {
   const { data, error } = await supabase
   .from('skills')
-  .insert([{ name: skill.name }], { upsert: true })
+  .insert([{ name: skill.name }])
   if(error === null){
     console.log(data);
   }else{

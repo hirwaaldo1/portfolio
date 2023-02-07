@@ -95,7 +95,14 @@ export default function Home() {
               <span className="button--text">
                 <a href="#Work">Projects</a>
               </span>
-              , <span className="button--text">Resumé</span>,{" "}
+              ,{" "}
+              <span className="button--text">
+                <Link href="/assets/resume.pdf" target="_blank">
+                  {" "}
+                  Resumé{" "}
+                </Link>
+              </span>
+              ,{" "}
               <span className="button--text">
                 <a href="#Contact"> Contact Me</a>
               </span>

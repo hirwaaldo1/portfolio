@@ -35,10 +35,10 @@ export default function Home() {
   useEffect(() => {
     getSkills(setSkills, process.env.BACKEND_URL);
   }, []);
+
   const addSkills = () => {
-    setSkills([...skills, name]);
     inputRel.current.value = "";
-    addSkilltoDb(name, process.env.BACKEND_URL);
+    addSkilltoDb(name, setSkills, skills);
   };
   const deleteSkill = (id: number) => {
     const newSkills = skills.filter((skill: any) => skill.id !== id);
@@ -64,7 +64,10 @@ export default function Home() {
               placeholder="Name of skills"
               ref={inputRel}
               onChange={(e) => {
-                setName({ id: skills.length + 1, name: e.target.value });
+                setName({
+                  id: skills[skills.length - 1]?.id + 1,
+                  name: e.target.value,
+                });
               }}
               className="block mb-4 text-gray-800 py-2 px-4 outline-none rounded-sm"
             />

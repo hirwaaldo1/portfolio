@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { Menu, X } from "react-feather";
+import Link from "next/link";
 export default function Header() {
   const [opan, setOpan] = useState(false);
   const refCategoryMenu = useRef(null);
@@ -29,9 +30,11 @@ export default function Header() {
               </a>
             );
           })}
-          <button className="border pb-1 pt-2 px-5 rounded-sm text-[15px] hover:bg-secondary-100 hover:bg-opacity-20">
-            Resumé
-          </button>
+          <Link href="/assets/resume.pdf" target="_blank">
+            <button className="border pb-1 pt-2 px-5 rounded-sm text-[15px] hover:bg-secondary-100 hover:bg-opacity-20">
+              Resumé
+            </button>
+          </Link>
         </div>
         <div className="items-center block sm:hidden">
           <Menu size={30} onClick={() => setOpan(true)} />
@@ -66,9 +69,11 @@ export default function Header() {
                     </a>
                   );
                 })}
-                <button className="border pb-3 pt-4 px-8 font-semibold rounded-sm text-[18px] hover:bg-secondary-100 hover:bg-opacity-20">
-                  Resumé
-                </button>
+                <Link href="/assets/resume.pdf" target="_blank">
+                  <button className="border pb-3 pt-4 px-8 font-semibold rounded-sm text-[18px] hover:bg-secondary-100 hover:bg-opacity-20">
+                    Resumé
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

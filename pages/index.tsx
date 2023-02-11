@@ -2,7 +2,7 @@ import Head from "next/head";
 import localFont from "@next/font/local";
 import Image from "next/image";
 import Title from "./components/ui/Title";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { GitHub, Instagram, Twitter, Linkedin, Dribbble } from "react-feather";
 import Header from "./components/Header";

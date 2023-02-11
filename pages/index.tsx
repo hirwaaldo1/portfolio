@@ -9,7 +9,6 @@ import Header from "./components/Header";
 import Experience from "./data/Experience.json";
 import Work from "./data/Work.json";
 import { Slide } from "react-awesome-reveal";
-import { getSkills } from "@/services/skills";
 const myFont = localFont({
   src: [
     {
@@ -38,7 +37,22 @@ const myFont = localFont({
 export default function Home() {
   const [whereIWork, setWhereIWork] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [skills, setSkills] = useState([]);
+  const SKILLS = [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "Reactjs",
+    "Nextjs",
+    "Node.js",
+    "Dart",
+    "Flutter",
+    "MySQL",
+    "Postgresql",
+    "Firebase",
+    "MongoDB",
+    "Supabase",
+    "Figma",
+    "WordPress",
+  ];
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 150) {
@@ -48,10 +62,6 @@ export default function Home() {
       }
     });
   }, []);
-  useEffect(() => {
-    getSkills(setSkills, process.env.BACKEND_URL);
-  }, []);
-
   return (
     <>
       <Head>
@@ -83,11 +93,17 @@ export default function Home() {
               </h2>
             </div>
             <p className="mt-12 mb-6 text-secondary-300 text-xl w-full leading-9 sm:leading-normal sm:w-[85%]">
-              Frontend developer, UX architect and Javascript engineer,{" "}
+              {/* Frontend developer, UX architect and Javascript engineer,{" "}
               <span className="button--text">Photochromic Lens</span>{" "}
               enthusiast, practicing minimalist, and{" "}
               <span className="button--text">Pop Music & Jazz lover</span> in
-              search of flow.
+              search of flow. */}
+              As a full stack developer, I specialize in{" "}
+              <span className="button--text">JavaScript</span> and{" "}
+              <span className="button--text">Dart</span> to create innovative
+              solutions. I am based in{" "}
+              <span className="button--text">Rwanda</span>, a beautiful country
+              known as the Land of a Thousand Hills.
             </p>
             <p className="mb-6 text-secondary-300 text-xl w-full leading-9 sm:leading-normal sm:w-[95%]">
               Working with my hands to make magic happen on the internet. View
@@ -213,14 +229,14 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-2 overflow-hidden">
                   <Slide cascade damping={0.2}>
-                    {skills.map((v: any, k) => {
+                    {SKILLS.map((v: any, k) => {
                       return (
                         <div
                           key={k}
                           className="text-[15px] flex items-center gap-3"
                         >
                           <span className="text-sm text-white">{"▹"}</span>
-                          <span>{v.name}</span>
+                          <span>{v}</span>
                         </div>
                       );
                     })}

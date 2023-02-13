@@ -50,6 +50,11 @@ export default function Home() {
     "Firebase",
     "MongoDB",
     "Supabase",
+    "Tailwind CSS",
+    "Material UI",
+    "Bootstrap",
+    "CSS",
+    "Html",
     "Figma",
     "WordPress",
   ];

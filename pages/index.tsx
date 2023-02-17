@@ -9,6 +9,8 @@ import Header from "./components/Header";
 import Experience from "./data/Experience.json";
 import Work from "./data/Work.json";
 import { Slide } from "react-awesome-reveal";
+import { SocialProfileJsonLd, DefaultSeo } from "next-seo";
+import { NEXT_SEO_DEFAULT } from "../next-seo.config";
 const myFont = localFont({
   src: [
     {
@@ -77,6 +79,10 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="google-site-verification"
+          content="wEpcBrRP8ftcSOnDW-hZ62UN2S-S_c2QN0OZmMdkPzM"
+        />
       </Head>
       <main className={myFont.className}>
         <Header />
@@ -89,7 +95,18 @@ export default function Home() {
         >
           <Header />
         </div>
-
+        <DefaultSeo {...NEXT_SEO_DEFAULT} />
+        <SocialProfileJsonLd
+          type="Person"
+          name="Hirwa Aldo"
+          url="https://www.hirwaaldo.com/"
+          sameAs={[
+            "https://www.facebook.com/hirwa.aldo/",
+            "https://www.instagram.com/aldo_hirwa",
+            "https://www.linkedin.com/in/aldo-hirwa/",
+            "https://www.youtube.com/@hirwaaldo529/search",
+          ]}
+        />
         <div className="max-w-6xl m-auto px-4 lg:px-2">
           <section className="relative pt-16 sm:mb-32 sm:pt-44 -h-screen 2xl:h-auto">
             <div className="relative w-fit ml-[140px] sm:ml-[170px]">
@@ -98,11 +115,6 @@ export default function Home() {
               </h2>
             </div>
             <p className="mt-12 mb-6 text-secondary-300 text-xl w-full leading-9 sm:leading-normal sm:w-[85%]">
-              {/* Frontend developer, UX architect and Javascript engineer,{" "}
-              <span className="button--text">Photochromic Lens</span>{" "}
-              enthusiast, practicing minimalist, and{" "}
-              <span className="button--text">Pop Music & Jazz lover</span> in
-              search of flow. */}
               As a full stack developer, I specialize in{" "}
               <span className="button--text">JavaScript</span> and{" "}
               <span className="button--text">Dart</span> to create innovative

@@ -42,13 +42,14 @@ export default function Home() {
   const SKILLS = [
     "JavaScript (ES6+)",
     "TypeScript",
-    "Reactjs",
-    "Nextjs",
+    "React",
+    "Next.js",
+    "Remix",
     "Node.js",
     "Dart",
     "Flutter",
     "MySQL",
-    "Postgresql",
+    "PostgreSQL",
     "Firebase",
     "MongoDB",
     "Supabase",
@@ -56,9 +57,8 @@ export default function Home() {
     "Material UI",
     "Bootstrap",
     "CSS",
-    "Html",
+    "HTML",
     "Figma",
-    "WordPress",
   ];
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -118,9 +118,8 @@ export default function Home() {
               As a full stack developer, I specialize in{" "}
               <span className="button--text">JavaScript</span> and{" "}
               <span className="button--text">Dart</span> to create innovative
-              solutions. I am based in{" "}
-              <span className="button--text">Rwanda</span>, a beautiful country
-              known as the Land of a Thousand Hills.
+              solutions. I live in <span className="button--text">Rwanda</span>,
+              a beautiful country known as the Land of a Thousand Hills.
             </p>
             <p className="mb-6 text-secondary-300 text-xl w-full leading-9 sm:leading-normal sm:w-[95%]">
               Working with my hands to make magic happen on the internet. View

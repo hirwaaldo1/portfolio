@@ -1,5 +1,32 @@
   [
   {
+    "image": "/assets/unita.PNG",
+    "compay": "Ape Unit",
+    "name": "Unit➇",
+    "detail":
+      "Unit➇ was founded in 2017 as a division of Ape Unit, to explore new solutions through decentralized technologies. We share this exploration at the intersection of strategy, design, and development with collaboration partners such asEthereum, Tezos, NEAR, Celo, Algorand, andCosmos.",
+    "tech": ["React", "Tailwind CSS","Swiper.js"],
+    "link": "https://unit8.apeunit.com/"
+  },
+  {
+    "image": "/assets/unit8.PNG",
+    "compay": "Ape Unit",
+    "name": "Unit A",
+    "detail":
+      "Unit A is A joint-force between African & European developers & organizations working in blockchain technology",
+    "tech": ["Next.js", "Tailwind CSS"],
+    "link": "https://unita.apeunit.com/"
+  },
+  {
+    "image": "/assets/a-task.png",
+    "compay": "Personal Project",
+    "name": "A-Task",
+    "detail":
+      "A-task is a user-friendly project management tool that streamlines daily tasks for greater productivity. It's an open-source platform that accepts issues and pull requests for continuous development. With its sleek interface, A-task is perfect for busy individuals at work or in their personal lives.",
+    "tech": ["Remix", "Tailwind CSS", "Supabase"],
+    "link": "https://a-task-manager.vercel.app"
+  },
+  {
     "image": "/assets/11.PNG",
     "compay": "rw.qwerty",
     "name": "CMS",

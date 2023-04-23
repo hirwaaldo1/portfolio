@@ -399,7 +399,7 @@ export default function Home() {
                         {v.name}
                       </h2>
                       <div>
-                        <p className="text-lg text-secondary-100 leading-6 md:bg-primary md:p-12 rounded-sm md:shadow-2xl">
+                        <p className="text-lg text-secondary-100 leading-6 md:bg-[#141428] md:p-12 rounded-sm md:shadow-2xl">
                           {v.detail}
                         </p>
                       </div>

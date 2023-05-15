@@ -357,108 +357,101 @@ export default function Home() {
             id="Work"
           >
             <Title name="Some Things I've Built" number={"03"} />
-            <Slide style={{ overflow: "hidden" }}>
-              {Work.map((v, k) => {
-                return (
-                  <a
-                    href={v.link}
-                    target="_blank"
-                    key={k}
-                    className="grid grid-cols-1 md:grid-cols-2 place-items-center group cursor-pointer mb-16"
-                    rel="noreferrer"
-                  >
-                    {k % 2 === 0 && (
-                      <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
-                        <Image
-                          src={v.image}
-                          className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
-                          alt={v.name}
-                          width={779}
-                          height={462}
-                        />
-                      </div>
-                    )}
-                    <div
-                      className={`text-left ${
-                        k % 2 === 0
-                          ? "md:text-right md:-ml-[20px]"
-                          : "md:text-left -mr-[20px]"
-                      } z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none`}
-                    >
+            {Work.map((v, k) => {
+              return (
+                <a
+                  href={v.link}
+                  target="_blank"
+                  key={k}
+                  className="grid grid-cols-1 md:grid-cols-2 place-items-center group cursor-pointer mb-16"
+                  rel="noreferrer"
+                >
+                  {k % 2 === 0 && (
+                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
                       <Image
                         src={v.image}
-                        className="block md:hidden absolute inset-0 rounded-sm object-contain w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
-                        alt=""
+                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                        alt={v.name}
                         width={779}
                         height={462}
                       />
-                      <h4 className="font-medium text-sm">
-                        Featured {v.compay}
-                      </h4>
-                      <h2 className="text-3xl mt-3 mb-5 font-semibold text-secondary">
-                        {v.name}
-                      </h2>
-                      <div>
-                        <p className="text-lg text-secondary-100 leading-6 md:bg-[#141428] md:p-12 rounded-sm md:shadow-2xl">
-                          {v.detail}
-                        </p>
-                      </div>
-                      <div
-                        className={`mt-6 flex justify-start gap-3 ${
-                          k % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                        }`}
-                      >
-                        {v.tech.map((v, k) => {
-                          return (
-                            <span
-                              className="text-sm text-secondary-100"
-                              key={k}
-                            >
-                              {v}
-                            </span>
-                          );
-                        })}
-                      </div>
-                      <div
-                        className={`flex justify-start ${
-                          k % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                        } mt-3`}
-                      >
-                        <svg
-                          width={24}
-                          height={24}
-                          xmlns="http://www.w3.org/2000/svg"
-                          role="img"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#ccd6f6"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-external-link"
-                        >
-                          <title>External Link</title>
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                          <polyline points="15 3 21 3 21 9"></polyline>
-                          <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                      </div>
                     </div>
-                    {k % 2 !== 0 && (
-                      <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
-                        <Image
-                          src={v.image}
-                          className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
-                          alt={v.name}
-                          width={379}
-                          height={262}
-                        />
-                      </div>
-                    )}
-                  </a>
-                );
-              })}
-            </Slide>
+                  )}
+                  <div
+                    className={`text-left ${
+                      k % 2 === 0
+                        ? "md:text-right md:-ml-[20px]"
+                        : "md:text-left -mr-[20px]"
+                    } z-50 relative overflow-hidden py-10 md:py-0 px-8 md:px-0 shadow-2xl md:shadow-none`}
+                  >
+                    <Image
+                      src={v.image}
+                      className="block md:hidden absolute inset-0 rounded-sm object-contain w-full h-full transition-all opacity-10 delay-100 grayscale hover:grayscale-0 -z-20"
+                      alt=""
+                      width={779}
+                      height={462}
+                    />
+                    <h4 className="font-medium text-sm">Featured {v.compay}</h4>
+                    <h2 className="text-3xl mt-3 mb-5 font-semibold text-secondary">
+                      {v.name}
+                    </h2>
+                    <div>
+                      <p className="text-lg text-secondary-100 leading-6 md:bg-[#141428] md:p-12 rounded-sm md:shadow-2xl">
+                        {v.detail}
+                      </p>
+                    </div>
+                    <div
+                      className={`mt-6 flex justify-start gap-3 ${
+                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                      }`}
+                    >
+                      {v.tech.map((v, k) => {
+                        return (
+                          <span className="text-sm text-secondary-100" key={k}>
+                            {v}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <div
+                      className={`flex justify-start ${
+                        k % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                      } mt-3`}
+                    >
+                      <svg
+                        width={24}
+                        height={24}
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#ccd6f6"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-external-link"
+                      >
+                        <title>External Link</title>
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </div>
+                  </div>
+                  {k % 2 !== 0 && (
+                    <div className="hidden md:block w-[579.162px] h-[362.388px] overflow-hidden rounded-sm relative">
+                      <Image
+                        src={v.image}
+                        className="object-cover w-full h-full transition-all delay-100 opacity-60 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                        alt={v.name}
+                        width={379}
+                        height={262}
+                      />
+                    </div>
+                  )}
+                </a>
+              );
+            })}
           </section>
           <section className="flex flex-col justify-center mb-2" id="Contact">
             <div className="text-center">

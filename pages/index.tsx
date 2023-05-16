@@ -43,6 +43,7 @@ export default function Home() {
     "JavaScript (ES6+)",
     "TypeScript",
     "React",
+    "React Native",
     "Next.js",
     "Remix",
     "Node.js",

@@ -18,12 +18,21 @@
     "link": "https://unita.apeunit.com/"
   },
   {
+    "image": "/assets/motari.png",
+    "compay": "rw.qwerty",
+    "name": "MotariPay",
+    "detail":
+      "MataraPay is a revolutionary new mobile application that is changing the way motorcycle riders operate in Rwanda. The app allows riders to manage their rides, track their earnings, and even get their own jackets. I was fortunate to be a part of the team that developed this amazing app, and I am proud of the work that we have done",
+    "tech": ["React Native","Expo","TypeScript","Tailwind CSS", "PHP", "Laravel"],
+    "link": "/motari"
+  },
+  {
     "image": "/assets/a-task.png",
     "compay": "Personal Project",
     "name": "A-Task",
     "detail":
       "A-task is a user-friendly project management tool that streamlines daily tasks for greater productivity. It's an open-source platform that accepts issues and pull requests for continuous development. With its sleek interface, A-task is perfect for busy individuals at work or in their personal lives.",
-    "tech": ["Remix", "Tailwind CSS", "Supabase"],
+    "tech": ["Remix", "TypeScript","Tailwind CSS", "Supabase"],
     "link": "https://a-task-manager.vercel.app"
   },
   {
